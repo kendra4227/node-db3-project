@@ -38,7 +38,7 @@ try{
   }
 
 } catch(err){
-  res.status(500).json({message:``})
+  res.status(500).json({message:`Error processing request`,error:err})
 }
 }
 
@@ -52,7 +52,14 @@ try{
   }
 */
 const validateStep = (req, res, next) => {
+try{
+  if(!req.body.instructions && req.body.step_number){
+    res.status(400).json({message:`invalid step`})
+  }
 
+} catch(err){
+res.status(500).json({message:`Error processing request`})
+}
 }
 
 module.exports = {

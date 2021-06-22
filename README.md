@@ -41,7 +41,7 @@ Write middleware functions in `api/schemes/scheme-middleware.js` following the i
 
 - [x] `checkSchemeId`
 - [x] `validateScheme`
-- [ ] `validateStep`
+- [x] `validateStep`
 
 ### Database Functions
 
