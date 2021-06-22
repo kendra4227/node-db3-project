@@ -32,7 +32,14 @@ const checkSchemeId = (req, res, next) => {
   }
 */
 const validateScheme = (req, res, next) => {
+try{
+  if(!req.body.scheme_name) {
+    res.status(400).json({message:`invalid scheme_name`})
+  }
 
+} catch(err){
+  res.status(500).json({message:``})
+}
 }
 
 /*

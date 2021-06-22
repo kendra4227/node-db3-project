@@ -40,7 +40,7 @@ Open `api/schemes/scheme-router.js` and study the specification for each endpoin
 Write middleware functions in `api/schemes/scheme-middleware.js` following the instructions inside that file:
 
 - [x] `checkSchemeId`
-- [ ] `validateScheme`
+- [x] `validateScheme`
 - [ ] `validateStep`
 
 ### Database Functions
