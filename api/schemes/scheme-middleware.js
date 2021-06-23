@@ -1,3 +1,5 @@
+const Schemes = require('./scheme-model')
+
 /*
   If `scheme_id` does not exist in the database:
 
@@ -7,7 +9,18 @@
   }
 */
 const checkSchemeId = (req, res, next) => {
+ try{ 
+   const scheme = await Schemes.getById(req.params.id)
+  if(scheme) {
+    req.scheme = scheme;
+    next();
+  }else{
+    res.status(404).json({message:`scheme with scheme_id <actual id> not found`})
 
+  }
+}catch(err){
+  res.status(500).json({message:`Error processing request`,error:err})
+}
 }
 
 /*
@@ -19,7 +32,14 @@ const checkSchemeId = (req, res, next) => {
   }
 */
 const validateScheme = (req, res, next) => {
+try{
+  if(!req.body.scheme_name) {
+    res.status(400).json({message:`invalid scheme_name`})
+  }
 
+} catch(err){
+  res.status(500).json({message:`Error processing request`,error:err})
+}
 }
 
 /*
@@ -32,7 +52,14 @@ const validateScheme = (req, res, next) => {
   }
 */
 const validateStep = (req, res, next) => {
+try{
+  if(!req.body.instructions && req.body.step_number){
+    res.status(400).json({message:`invalid step`})
+  }
 
+} catch(err){
+res.status(500).json({message:`Error processing request`})
+}
 }
 
 module.exports = {
